@@ -38,7 +38,7 @@ export default function Home() {
             href="/venta?referal=partner123&event=2"
             className="inline-block bg-slate-800 hover:bg-slate-900 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl shadow-lg active:translate-y-0 active:shadow-lg"
           >
-            Ingresar
+            Comprar Entradas
           </Link>
 
           <div className="text-xs sm:text-sm opacity-70 max-w-md mx-auto">
