@@ -7,16 +7,7 @@ export async function POST(request: NextRequest) {
     const page = searchParams.get('page') || '1'
     const limit = searchParams.get('limit') || '10'
     
-    const body = await request.json()
-    const { token } = body
-
-    // Validar que el token esté presente
-    if (!token) {
-      return NextResponse.json(
-        { error: 'Token requerido' },
-        { status: 400 }
-      )
-    }
+    const token  = "tok001"
 
     // Hacer la petición al API externo
     const response = await fetch(`${env.API_BASE_URL}/events/paginated?page=${page}&limit=${limit}`, {
