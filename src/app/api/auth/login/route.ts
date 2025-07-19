@@ -1,6 +1,4 @@
 import { env } from "@/config/env.config";
-import { NextApiResponse } from "next";
-import { redirect } from "next/dist/server/api-utils";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
