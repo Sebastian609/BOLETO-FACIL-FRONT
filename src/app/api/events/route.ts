@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { env } from "@/config/env.config";
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,7 +19,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Hacer la petición al API externo
-    const response = await fetch(`http://localhost:2222/api/events/paginated?page=${page}&limit=${limit}`, {
+    const response = await fetch(`${env.API_BASE_URL}/events/paginated?page=${page}&limit=${limit}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ export async function GET(request: NextRequest) {
     const token = searchParams.get('token') || '7a2a63cef3e1b4f181fa23b212303b2f'
 
     // Hacer la petición al API externo
-    const response = await fetch(`http://localhost:2222/api/events/paginated?page=${page}&limit=${limit}`, {
+    const response = await fetch(`${env.API_BASE_URL}/events/paginated?page=${page}&limit=${limit}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
