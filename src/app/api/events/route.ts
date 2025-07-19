@@ -1,0 +1,77 @@
+import { NextRequest, NextResponse } from 'next/server'
+
+export async function POST(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url)
+    const page = searchParams.get('page') || '1'
+    const limit = searchParams.get('limit') || '10'
+    
+    const body = await request.json()
+    const { token } = body
+
+    // Validar que el token esté presente
+    if (!token) {
+      return NextResponse.json(
+        { error: 'Token requerido' },
+        { status: 400 }
+      )
+    }
+
+    // Hacer la petición al API externo
+    const response = await fetch(`http://localhost:2222/api/events/paginated?page=${page}&limit=${limit}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token })
+    })
+
+    if (!response.ok) {
+      throw new Error(`Error del API externo: ${response.status}`)
+    }
+
+    const data = await response.json()
+    
+    return NextResponse.json(data)
+  } catch (error) {
+    console.error('Error en API handler de eventos:', error)
+    return NextResponse.json(
+      { error: 'Error interno del servidor' },
+      { status: 500 }
+    )
+  }
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url)
+    const page = searchParams.get('page') || '1'
+    const limit = searchParams.get('limit') || '10'
+    
+    // Para GET, asumimos que el token está en los headers o query params
+    const token = searchParams.get('token') || '7a2a63cef3e1b4f181fa23b212303b2f'
+
+    // Hacer la petición al API externo
+    const response = await fetch(`http://localhost:2222/api/events/paginated?page=${page}&limit=${limit}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ token })
+    })
+
+    if (!response.ok) {
+      throw new Error(`Error del API externo: ${response.status}`)
+    }
+
+    const data = await response.json()
+    
+    return NextResponse.json(data)
+  } catch (error) {
+    console.error('Error en API handler de eventos:', error)
+    return NextResponse.json(
+      { error: 'Error interno del servidor' },
+      { status: 500 }
+    )
+  }
+} 
