@@ -1,4 +1,5 @@
 "use client"
+import { env } from "@/config/env.config";
 
 import { useState, useEffect } from "react"
 
@@ -74,7 +75,7 @@ export default function EventsCarrousel() {
     const fetchEvents = async () => {
       try {
         setLoading(true)
-        const response = await fetch(`http://localhost:2222/api/events/paginated?page=${currentPage}&limit=${limit}`, {
+        const response = await fetch(`${env.API_BASE_URL}/events/paginated?page=${currentPage}&limit=${limit}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
