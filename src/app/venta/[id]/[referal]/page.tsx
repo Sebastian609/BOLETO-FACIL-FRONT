@@ -2,15 +2,15 @@ import VentaClient from "@/components/VentaClient"
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export default async function VentaPage({
-  params,
-}: {
-  params: {
+type PageProps = {
+  params: Promise<{
     referal: string;
     id: string;
-  };
-}) {
-  const { referal, id } = await params;
+  }>;
+};
+
+export default async function VentaPage(props: PageProps) {
+  const { referal, id } = await props.params;
 
   if (!referal || !id) {
     return <p>Faltan parámetros requeridos</p>;
@@ -24,7 +24,7 @@ export default async function VentaPage({
   const res = await fetch(`http://localhost:3000/api/event/${id}`, {
     headers: {
       "Content-Type": "application/json",
-      Autorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
 
     method: "GET",

@@ -1,4 +1,5 @@
 import { env } from "@/config/env.config";
+
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -71,13 +72,18 @@ export async function POST(request: NextRequest) {
       if (process.env.NODE_ENV === 'development') {
         console.error("Error during authentication POST request:", error);
       }
+      let errorMessage = "Ocurrió un error desconocido.";
+      if (error instanceof Error && error.message) {
+        errorMessage = error.message;
+      }
       return NextResponse.json(
         {
-          message: "Credenciales inválidas. " + (error.message || "Ocurrió un error desconocido."),
+          message: "Credenciales inválidas. " + errorMessage,
         },
         {
           status: 401, // Unauthorized
         }
       );
+      
     }
 }
