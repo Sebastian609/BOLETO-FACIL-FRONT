@@ -80,9 +80,6 @@ export default function EventsCarrousel() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            token: "tok001",
-          }),
         })
 
         if (!response.ok) {
