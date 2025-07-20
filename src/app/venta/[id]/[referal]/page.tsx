@@ -21,12 +21,11 @@ export default async function VentaPage(props: PageProps) {
     redirect("/login")
   }
 
-  const res = await fetch(`http://localhost:${env.PORT}/api/event/${id}`, {
+  const res = await fetch(`${env.NEXT_PUBLIC_BASE_URL}/api/event/${id}`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-
     method: "GET",
   });
 

@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
     const page = searchParams.get('page') || '1'
     const limit = searchParams.get('limit') || '10'
     
-    const token  = "tok001"
+    const token  = env.API_TOKEN
 
     // Hacer la petición al API externo
     const response = await fetch(`${env.API_BASE_URL}/events/paginated?page=${page}&limit=${limit}`, {
@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
     const limit = searchParams.get('limit') || '10'
     
     // Para GET, asumimos que el token está en los headers o query params
-    const token = searchParams.get('token') || 'tok001'
+    const token = searchParams.get('token') || env.API_TOKEN
 
     // Hacer la petición al API externo
     const response = await fetch(`${env.API_BASE_URL}/events/paginated?page=${page}&limit=${limit}`, {

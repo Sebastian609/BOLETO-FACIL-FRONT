@@ -7,10 +7,19 @@ export const env = {
   
   // API Endpoints
   EVENTS_ENDPOINT: "/events/paginated",
-  PORT: process.env.NEXT_PUBLIC_PORT || 3005,
+  
   // API Settings
   DEFAULT_LIMIT: 10,
   API_TIMEOUT: parseInt(process.env.NEXT_PUBLIC_API_TIMEOUT || "10000"),
+  
+  // Server Configuration
+  PORT: parseInt(process.env.PORT || "3000"),
+  
+  // API Token
+  API_TOKEN: process.env.NEXT_PUBLIC_API_TOKEN || "tok001",
+  
+  // Base URL for internal API calls
+  NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3005",
 };
 
 // Type for environment variables

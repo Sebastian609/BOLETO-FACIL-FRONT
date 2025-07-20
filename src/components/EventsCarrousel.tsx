@@ -242,7 +242,7 @@ export default function EventsCarrousel() {
                             </span>
                             <button
                               onClick={() => {
-                                window.location.href = `/venta/${eventLocation.id}/tok001`
+                                window.location.href = `/venta/${eventLocation.id}/${env.API_TOKEN}`
                               }}
                               className={`px-4 py-2 text-xs font-semibold text-white rounded-lg bg-gradient-to-r ${gradientClass} hover:shadow-lg hover:shadow-purple-200/50 transition-all duration-300 transform hover:scale-105`}
                             >
