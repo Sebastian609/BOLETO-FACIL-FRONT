@@ -76,12 +76,12 @@ export default function EventsCarrousel() {
       try {
         setLoading(true)
         const response = await fetch(`${env.API_BASE_URL}/events/paginated?page=${currentPage}&limit=${limit}`, {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            token: "7a2a63cef3e1b4f181fa23b212303b2f",
+            token: "tok001",
           }),
         })
 
