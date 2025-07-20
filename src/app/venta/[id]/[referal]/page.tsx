@@ -1,7 +1,7 @@
 import VentaClient from "@/components/VentaClient"
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-
+import { env } from "@/config/env.config";
 type PageProps = {
   params: Promise<{
     referal: string;
@@ -21,7 +21,7 @@ export default async function VentaPage(props: PageProps) {
     redirect("/login")
   }
 
-  const res = await fetch(`http://localhost:3000/api/event/${id}`, {
+  const res = await fetch(`http://localhost:${env.PORT}/api/event/${id}`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

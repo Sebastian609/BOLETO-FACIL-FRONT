@@ -7,7 +7,7 @@ export const env = {
   
   // API Endpoints
   EVENTS_ENDPOINT: "/events/paginated",
-  
+  PORT: process.env.NEXT_PUBLIC_PORT || 3005,
   // API Settings
   DEFAULT_LIMIT: 10,
   API_TIMEOUT: parseInt(process.env.NEXT_PUBLIC_API_TIMEOUT || "10000"),
